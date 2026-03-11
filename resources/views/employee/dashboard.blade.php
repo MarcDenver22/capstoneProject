@@ -11,7 +11,7 @@
 </div>
 
 <!-- Stat Cards -->
-<div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+<div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 mb-6">
 
     <!-- Total Hours -->
     <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-5 flex items-center gap-4 border-l-4 border-l-indigo-500">
@@ -32,6 +32,28 @@
         <div>
             <p class="text-sm text-gray-500 font-medium">Absences</p>
             <p class="text-2xl font-bold text-gray-800">{{ $absences }}</p>
+        </div>
+    </div>
+
+    <!-- Leave Balance -->
+    <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-5 flex items-center gap-4 border-l-4 border-l-green-500">
+        <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0">
+            <i class="fas fa-file-medical text-green-600 text-xl"></i>
+        </div>
+        <div>
+            <p class="text-sm text-gray-500 font-medium">Leave Balance</p>
+            <p class="text-2xl font-bold text-gray-800">{{ $leaveBalance }} <span class="text-sm font-medium text-gray-400">days</span></p>
+        </div>
+    </div>
+
+    <!-- On-Time Rate -->
+    <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-5 flex items-center gap-4 border-l-4 border-l-blue-500">
+        <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
+            <i class="fas fa-chart-line text-blue-600 text-xl"></i>
+        </div>
+        <div>
+            <p class="text-sm text-gray-500 font-medium">On-Time Rate</p>
+            <p class="text-2xl font-bold text-gray-800">{{ $onTimeRate }}<span class="text-sm font-medium text-gray-400">%</span></p>
         </div>
     </div>
 
@@ -126,6 +148,47 @@
 
     </div>
 
+</div>
+
+<!-- Upcoming Schedule -->
+<div class="mt-6 bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+    <h2 class="text-lg font-bold text-gray-800 mb-4">
+        <i class="fas fa-calendar-alt text-indigo-500 mr-2"></i>Upcoming Schedule
+    </h2>
+    <div class="overflow-x-auto">
+        <table class="w-full text-sm">
+            <thead>
+                <tr class="border-b border-gray-200">
+                    <th class="text-left py-3 px-4 font-semibold text-gray-600">DATE</th>
+                    <th class="text-left py-3 px-4 font-semibold text-gray-600">DAY</th>
+                    <th class="text-left py-3 px-4 font-semibold text-gray-600">TIME</th>
+                    <th class="text-left py-3 px-4 font-semibold text-gray-600">SUBJECT</th>
+                    <th class="text-left py-3 px-4 font-semibold text-gray-600">ROOM</th>
+                    <th class="text-left py-3 px-4 font-semibold text-gray-600">TYPE</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($schedule as $item)
+                <tr class="border-b border-gray-50 hover:bg-gray-50 transition">
+                    <td class="py-3 px-4 text-gray-700">{{ $item['date'] }}</td>
+                    <td class="py-3 px-4 text-gray-600">{{ $item['day'] }}</td>
+                    <td class="py-3 px-4 text-gray-600">{{ $item['time'] }}</td>
+                    <td class="py-3 px-4 font-medium text-gray-800">{{ $item['subject'] }}</td>
+                    <td class="py-3 px-4 text-gray-600">{{ $item['room'] }}</td>
+                    <td class="py-3 px-4">
+                        @if ($item['type'] === 'Lecture')
+                            <span class="bg-blue-100 text-blue-700 text-xs font-semibold px-2.5 py-0.5 rounded-full">Lecture</span>
+                        @elseif ($item['type'] === 'Lab')
+                            <span class="bg-purple-100 text-purple-700 text-xs font-semibold px-2.5 py-0.5 rounded-full">Lab</span>
+                        @else
+                            <span class="bg-gray-100 text-gray-700 text-xs font-semibold px-2.5 py-0.5 rounded-full">{{ $item['type'] }}</span>
+                        @endif
+                    </td>
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
 </div>
 
 @endsection

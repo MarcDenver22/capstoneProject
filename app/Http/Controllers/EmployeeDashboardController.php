@@ -18,7 +18,9 @@ class EmployeeDashboardController extends Controller
         ];
 
         $totalHours = 30;
-        $absences   = 25;
+        $absences   = 2;
+        $leaveBalance = 12;
+        $onTimeRate = 62;
 
         $attendanceRecords = [
             ['date' => '2025-03-01', 'time_in' => '08:12 AM', 'time_out' => '05:05 PM', 'hours' => '8.88', 'status' => 'Late'],
@@ -57,15 +59,31 @@ class EmployeeDashboardController extends Controller
                 'date'         => 'January 6, 2025',
                 'border_color' => 'border-red-400',
             ],
+            [
+                'title'        => 'Teacher Training Seminar',
+                'date'         => 'March 22, 2025',
+                'border_color' => 'border-green-500',
+            ],
+        ];
+
+        $schedule = [
+            ['date' => '2025-03-12', 'day' => 'Wednesday', 'time' => '07:30 AM – 09:00 AM', 'subject' => 'Introduction to Programming', 'room' => 'IT-101', 'type' => 'Lecture'],
+            ['date' => '2025-03-12', 'day' => 'Wednesday', 'time' => '01:00 PM – 03:00 PM', 'subject' => 'Data Structures & Algorithms', 'room' => 'IT-Lab 2', 'type' => 'Lab'],
+            ['date' => '2025-03-13', 'day' => 'Thursday',  'time' => '08:00 AM – 09:30 AM', 'subject' => 'Web Development',            'room' => 'IT-102', 'type' => 'Lecture'],
+            ['date' => '2025-03-13', 'day' => 'Thursday',  'time' => '10:00 AM – 12:00 PM', 'subject' => 'Web Development',            'room' => 'IT-Lab 1', 'type' => 'Lab'],
+            ['date' => '2025-03-14', 'day' => 'Friday',    'time' => '09:00 AM – 10:30 AM', 'subject' => 'Database Management',        'room' => 'IT-103', 'type' => 'Lecture'],
         ];
 
         return view('employee.dashboard', compact(
             'employee',
             'totalHours',
             'absences',
+            'leaveBalance',
+            'onTimeRate',
             'attendanceRecords',
             'leaveRequests',
-            'announcements'
+            'announcements',
+            'schedule'
         ));
     }
 }

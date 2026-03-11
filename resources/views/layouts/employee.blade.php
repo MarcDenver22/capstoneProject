@@ -141,19 +141,54 @@
                     <span class="nav-tooltip">Dashboard</span>
                 </div>
 
-                <!-- Portal -->
+                <!-- My Attendance -->
                 <div class="nav-item relative">
                     <a href="#" class="nav-icon-btn">
-                        <i class="fas fa-user text-[17px]"></i>
+                        <i class="fas fa-calendar-check text-[17px]"></i>
                     </a>
-                    <span class="nav-tooltip">Portal</span>
+                    <span class="nav-tooltip">My Attendance</span>
+                </div>
+
+                <!-- Leave Requests -->
+                <div class="nav-item relative">
+                    <a href="#" class="nav-icon-btn">
+                        <i class="fas fa-file-medical text-[17px]"></i>
+                    </a>
+                    <span class="nav-tooltip">Leave Requests</span>
+                </div>
+
+                <!-- Schedule -->
+                <div class="nav-item relative">
+                    <a href="#" class="nav-icon-btn">
+                        <i class="fas fa-calendar-alt text-[17px]"></i>
+                    </a>
+                    <span class="nav-tooltip">Schedule</span>
+                </div>
+
+                <!-- Divider -->
+                <div class="sidebar-divider my-2"></div>
+
+                <!-- Portal / Profile -->
+                <div class="nav-item relative">
+                    <a href="#" class="nav-icon-btn">
+                        <i class="fas fa-id-card text-[17px]"></i>
+                    </a>
+                    <span class="nav-tooltip">My Profile</span>
                 </div>
 
             </nav>
 
-            <!-- Bottom: Logout & Avatar -->
+            <!-- Bottom: Settings, Logout & Avatar -->
             <div class="flex flex-col items-center gap-1.5 mt-auto">
                 <div class="sidebar-divider mb-2"></div>
+
+                <!-- Settings -->
+                <div class="nav-item relative">
+                    <a href="#" class="nav-icon-btn">
+                        <i class="fas fa-cog text-[17px]"></i>
+                    </a>
+                    <span class="nav-tooltip">Settings</span>
+                </div>
 
                 <!-- Logout -->
                 <div class="nav-item relative">
@@ -168,8 +203,8 @@
 
                 <!-- Profile Avatar -->
                 <div class="mt-2">
-                    <div class="w-9 h-9 bg-indigo-100 rounded-full flex items-center justify-center ring-2 ring-white shadow-sm cursor-pointer hover:ring-indigo-200 transition">
-                        <i class="fas fa-user text-indigo-600 text-sm"></i>
+                    <div class="w-9 h-9 bg-teal-100 rounded-full flex items-center justify-center ring-2 ring-white shadow-sm cursor-pointer hover:ring-teal-200 transition">
+                        <i class="fas fa-user text-teal-600 text-sm"></i>
                     </div>
                 </div>
             </div>
