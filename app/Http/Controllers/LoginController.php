@@ -22,7 +22,19 @@ class LoginController extends Controller
         if (Auth::attempt($credentials, $request->boolean('remember'))) {
             $request->session()->regenerate();
 
-            return redirect()->intended(route('dashboard'));
+            if (auth()->user()->role === 'admin') {
+                return redirect()->intended(route('dashboard'));
+            }
+
+            if (auth()->user()->role === 'employee') {
+                return redirect()->intended(route('employee.dashboard'));
+            }
+
+            // Fallback for unexpected roles
+            Auth::logout();
+            return redirect()->route('login')->withErrors([
+                'email' => 'Your account role is not recognized.',
+            ]);
         }
 
         return back()->withErrors([
